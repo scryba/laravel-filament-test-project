@@ -1,0 +1,64 @@
+
+// COMMANDS AND PROCESS
+
+laravel new laravel-filament-test-project
+
+cd laravel-filament-test-project
+
+
+// for admin / backend dev
+//https://filamentphp.com/docs/3.x/panels/installation
+
+composer require filament/filament:"^3.0-stable" -W
+
+php artisan filament:install --panels
+
+
+// setup database config\database.php and .env
+// USING SQLITE
+
+
+// .env filament
+DB_CONNECTION=sqlite
+DB_DATABASE=laravel_filament_test_project.sqlite
+DB_FOREIGN_KEYS=true
+
+
+// run in terminal
+
+mkdir -p storage/app/database
+
+touch storage/app/database/laravel_filament_test_project.sqlite
+
+php artisan migrate
+
+php artisan make:filament-user
+
+php artisan vendor:publish --tag=filament-config
+
+php artisan livewire:publish --config
+
+
+https://laravel.com/docs/10.x#your-first-laravel-project
+
+php artisan serve
+
+
+//
+https://laravel.com/docs/10.x/eloquent#generating-model-classes
+
+php artisan make:model ImageGallery -mfs
+
+
+
+//
+// when creating a custom page don't specify any associate Resource.
+// Would you like to create the page inside a resource?  [don't type anything, just hit enter on keyboard]
+
+php artisan make:filament-page ImportGalleries --type=custom
+
+
+
+
+///
+
